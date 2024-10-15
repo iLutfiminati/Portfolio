@@ -1,0 +1,956 @@
+/* Import font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #1D2B53; /* Gradasi biru tua */
+    color: #ededed;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 10%;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+.logo {
+    font-size: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: default;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+}
+
+
+.navbar a {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 35px;
+    transition: .3s;
+    opacity: 0;
+    animation: slideTop .5s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+}
+
+.navbar a:hover {
+    color: #FAEF5D;
+}
+
+.navbar.active {
+    display: flex; /* Tampilkan navbar */
+    flex-direction: column; /* Tumpuk item secara vertikal */
+    position: absolute; /* Memastikan navbar dapat diposisikan */
+    top: 60px; /* Sesuaikan dengan tinggi header */
+    left: 10%; /* Sesuaikan dengan padding */
+    right: 10%;
+    background-color: rgba(10, 25, 47, 0.9); /* Latar belakang semi-transparan */
+    padding: 20px; /* Padding untuk isi navbar */
+}
+
+.hamburger {
+    display: none; /* Sembunyikan hamburger secara default */
+    cursor: pointer;
+    font-size: 28px; /* Ukuran ikon */
+    color: #fff; /* Warna ikon */
+}
+
+.home {
+    display: flex;
+    justify-content: space-between; /* Membuat tulisan di kiri dan foto di kanan */
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 0 10%;
+}
+
+.home-content {
+    max-width: 50%;
+}
+
+.home-content h3 {
+    font-size: 32px;
+    font-weight: 700;
+    opacity: 0;
+    animation: slideBottom 1s ease forwards;
+    animation-delay: .7s;
+}
+.home-content h3:nth-of-type(2){
+    margin-bottom: 30px;
+    animation: slideTop 1s ease forwards;
+    animation-delay: .7s;
+}
+.home-content h3 span {
+    color: #FAEF5D;
+}
+.home-content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin: -3px 0;
+    opacity: 0;
+    animation: slideRight 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-content h2 {
+    font-size: 32px;
+    color: #FAEF5D;
+}
+
+.home-content p {
+    font-size: 18px;
+    color: #ccc;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: 1s;
+}
+
+.home-sci {
+    margin-top: 20px;
+    position: relative; /* Tambahkan ini untuk menempatkan tooltip relatif */
+}
+
+.home-sci a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: 2px solid #FAEF5D;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #FAEF5D;
+    text-decoration: none;
+    margin: 30px 15px 30px 0;
+    transition: .5s ease;
+    opacity: 0;
+    animation: slideLeft 1s ease forwards;
+    animation-delay: calc(.2s * var(--i));
+    position: relative; /* Tambahkan ini untuk tooltip */
+}
+
+.home-sci a:hover {
+    background: #FAEF5D;
+    color: rgb(10, 10, 10);
+    box-shadow: 0 0 20px #FAEF5D;
+}
+
+/* Tooltip styles */
+.home-sci a::after {
+    content: attr(data-tooltip); /* Ambil teks dari atribut data-tooltip */
+    position: absolute;
+    bottom: 50px; /* Jarak dari ikon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #FAEF5D; /* Warna latar belakang tooltip */
+    color: rgb(10, 10, 10); /* Warna teks tooltip */
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Agar teks tidak terputus */
+    opacity: 0; /* Mulai tidak terlihat */
+    visibility: hidden; /* Sembunyikan tooltip */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Transisi halus */
+    z-index: 10; /* Pastikan tooltip di atas elemen lain */
+}
+
+.home-sci a:hover::after {
+    opacity: 1; /* Tampilkan tooltip saat hover */
+    visibility: visible; /* Ubah visibilitas saat hover */
+}
+
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 28px;
+    background-color: #FAEF5D;
+    border: none;
+    color: #001F3F;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px #FAEF5D, 0 0 25px #FAEF5D;
+}
+
+.btn:hover {
+    background-color: #FAEF5D; /* Hover efek untuk tombol */
+    box-shadow: 0 0 5px #FAEF5D, 0 0 10px #FAEF5D, 0 0 15px #FAEF5D, 0 0 20px #FAEF5D, 0 0 50px #FAEF5D;
+}
+
+.home-image, .about-img {
+    position: relative;
+}
+
+.home-image img {
+    width: 400px;  /* Ukuran gambar lebih besar */
+    height: 400px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+/*Bagiian 2*/
+.about {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+    padding: 50px; /* Menambahkan padding untuk ruang */
+    background-color: #1D2B53; /* Background untuk kontras */
+}
+
+.about-img img {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%; /* Tetap menjaga bentuk lingkaran */
+    object-fit: cover; /* Agar gambar tetap proporsional */
+    margin: 0 auto; /* Mengatur gambar ke tengah */
+    z-index: 1; /* Pastikan gambar di depan elemen lain */
+    position: relative; /* Hindari positioning absolut yang bisa menyebabkan tumpang tindih */
+}
+
+
+.about-text h2 span {
+    color: #FAEF5D; /* Warna lebih terang untuk penekanan */
+}
+
+.about-text h2 {
+    font-size: 40px;
+    margin-top: 50px;
+    color: #fff; /* Pastikan teks terlihat di background gelap */
+}
+
+.about-text h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #FAEF5D; /* Warna untuk membuatnya menonjol */
+    line-height: 1.7;
+    margin: 10px 0 10px;
+}
+
+.about-text p {
+    color: aliceblue;
+    font-size: 18px;
+    line-height: 1.6;
+
+    text-align: justify;
+}
+/*Bagiian 3*/
+#services {
+    color: aliceblue;
+    font-size: 20px;
+    line-height: 1.4;
+    margin-bottom: 4rem;
+    background-color: #1D2B53; /* Tambahkan warna latar belakang */
+}
+
+.sub-title {
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 70px;
+}
+
+.sub-title span {
+    color: #FAEF5D;
+}
+
+.container {
+    padding: 90px 20px; /* Tambahkan padding samping untuk responsif */
+}
+
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(259px, 1fr));
+    gap: 50px; /* Kurangi jarak antar kotak */
+    margin-top: 0px;
+    padding: 50px;
+}
+
+.services-list div {
+    background-color: transparent;
+    padding: 20px; /* Kurangi padding */
+    font-size: 13px;
+    font-weight: 13px;
+    border-radius: 20px;
+    transition: background 0.5s, transform 0.5s;
+    box-shadow: 1px 1px 20px #FAEF5D, 1px 1px 40px #FAEF5D;
+}
+
+.services-list div:hover {
+    background-color: rgba(15, 239, 255, 0.2); /* Efek hover yang ringan */
+    transform: translateY(-5px); /* Sedikit mengangkat saat hover */
+}
+
+.services-list div p {
+    text-align: justify;
+}
+
+.services-list div i {
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+
+.services-list div h2 {
+    font-size: 24px; /* Ukuran font lebih kecil */
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.services-list div a {
+    text-decoration: none;
+    color: #000000; /* Ubah warna tautan agar sesuai dengan tema */
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.read {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #FAEF5D;
+    border-radius: 40px;
+    font-size: 16px;
+    color: #081b29;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-weight: 600;
+    opacity: 0;
+    animation: slideTop 1s ease forwards;
+    animation-delay: 2s;
+    box-shadow: 0 0 5px #FAEF5D, 0 0 25px #FAEF5D;
+}
+
+.read:hover {
+    box-shadow: 0 0 5px #FAEF5D, 0 0 25px #FAEF5D, 0 0 50px #FAEF5D, 0 0 100px #FAEF5D, 0 0 200px #FAEF5D;
+}
+
+/*Bagiian 4*/
+
+#skills {
+    color: aliceblue;
+    margin-bottom: 4rem;
+}
+
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 50px;
+}
+
+.skill-box {
+    background-color: transparent; /* Menghapus warna latar belakang */
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center; /* Mengatur teks ke tengah */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5); /* Bayangan hitam */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transisi untuk transformasi dan bayangan */
+    cursor: pointer;
+}
+
+.skill-box:hover {
+    transform: translateY(-10px); /* Sedikit membesar saat hover */
+}
+
+.skill-box h2 {
+    margin-top: 10px; /* Jarak antara ikon dan teks */
+    font-size: 20px; /* Ukuran font untuk nama keterampilan */
+}
+.skill-box i{
+    color: #FAEF5D;
+    font-size: 50px;
+}
+
+/*Bagian 5 */
+
+.main-text{
+    padding-top: 130px;
+    margin-top: 100px;
+}
+.main-text h2{
+    font-size: 40px;
+    line-height: 1;
+    text-align: center;
+    padding-bottom: 50px;
+}
+.main-text h2 span{
+    color: #FAEF5D;
+}
+
+.portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+    justify-content: center;
+    align-items: center; 
+    margin-left: 25px;
+    margin-right: 25px;
+    gap: 20px; 
+    
+}
+
+.row {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+   
+    gap: 20px; 
+    
+} 
+
+.row img {
+    width: 100%; 
+    display: block;
+    border-radius: 8px;
+    transition: transform 0.5s ease;
+    cursor: pointer;
+}
+
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba( 0,0,0,0.1),#1a1517);
+    position: absolute;
+    border-radius: 8px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 40px;
+    transition: height 0.5s;
+    
+
+} 
+.layer a {
+    text-decoration: none; /* Menghilangkan garis bawah */
+}
+
+
+.layer h5{
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+
+}
+.layer p{
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.8;
+
+}
+.layer i {
+    color: #fff; /* Warna ikon */
+    margin-top: 20px;
+    font-size: 40px; /* Ukuran ikon lebih besar */
+    width: 70px; /* Sesuaikan lebar ikon */
+    height: 70px; /* Sesuaikan tinggi ikon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; 
+}
+
+.row:hover img{
+    transform: scale(1.1);
+
+}
+.row:hover .layer{
+    height: 100%;
+}
+/* Animasi untuk setiap row */
+.portfolio-content .row {
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(20px); /* Mulai dari posisi sedikit di bawah */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transisi halus */
+}
+
+.portfolio-content .row.active {
+    opacity: 1; /* Menjadi terlihat */
+    transform: translateY(0); /* Kembali ke posisi semula */
+}
+/* Gaya untuk modal */
+.modal {
+    display: none;
+
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(20px);
+}
+
+/* Gaya gambar dalam modal */
+.modal.show {
+    display: flex; /* Modal terlihat saat dibuka */
+    opacity: 1; /* Opacity ke 1 saat modal dibuka */
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    border-radius: 10px;
+    transform: scale(0); /* Mulai dari ukuran kecil */
+    transition: transform 0.6s ease; /* Transisi untuk zoom */
+}
+
+.modal.show .modal-content {
+    transform: scale(1); /* Gambar membesar menjadi ukuran normal */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #fff;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Transition untuk memperhalus efek modal */
+.modal-content {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+
+/* bagian terkhir*/
+
+.contact{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 3rem;
+    padding-left: 30px;
+    padding-top: 100px;
+    margin-top: 130px;
+}
+
+.contact-text h2{
+    font-size: 90px;
+    line-height: 1;
+    text-align: center;
+
+}
+.contact-text h2 span{
+    color: #FAEF5D;
+}
+
+.contact-text h4{
+    margin: 15px 0;
+    color: rgb(228,228,228);
+    font-weight: 600;
+    font-size: 20px;
+}
+.contact-text p{
+    color: rgb(177, 177, 177);
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 2rem;
+
+}
+.contact-list{
+    margin-bottom: 3rem;
+}
+.contact-list li{
+    margin-bottom: 10px;
+    display: block;
+}
+.contact-list li{
+    margin-bottom: 10px;
+    display: block;
+}
+.contact-list i{
+    display: inline-block;
+    color: #FAEF5D;
+    font-size: 20px;
+    font-weight: 600;
+    transition: all .40s ease;
+
+}
+.contact-list li a:hover{
+    transform: scale(1.01) translateY(-5px);
+    color: #FAEF5D;
+}
+.contact-form {
+    padding: 20px; /* Adding padding inside the form for spacing */
+    margin: 0 auto; /* Centering the form horizontally */
+    max-width: 600px; /* Setting a maximum width to avoid stretching too much on large screens */
+}
+
+/* Adjustments for inputs and textarea to provide spacing */
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%; /* Make inputs take full width */
+    padding: 10px;
+    margin-bottom: 20px; /* Add spacing between each input field */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Button styling */
+.contact-form .send {
+    width: 100%;
+    padding: 10px;
+    background-color: #7E2553;
+    border: none;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.last-text p{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+     background: rgba(0, 0, 0, .1);
+    backdrop-filter: blur(50px);
+    font-weight: 300;
+    margin-top: 70px;
+}
+.top{
+    position: fixed;
+    bottom: 2.1rem;
+    right: 2.1rem;
+}
+.top i{
+    color: #000;
+    background: #FAEF5D;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
+
+
+@keyframes zoom {
+    from {transform: scale(0)}
+    to {transform: scale(1)}
+}
+
+@keyframes slideRight{
+    0%{
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+@keyframes slideTop{
+    0%{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes slideBottom{
+    0%{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+@keyframes slideLeft{
+    0%{
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+}
+
+/* Animasi untuk h2 (fade-in dari kiri) */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px); /* Mulai dari kiri */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Animasi untuk h4 (fade-in dari kanan) */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px); /* Mulai dari kanan */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Animasi untuk p (fade-in dari bawah) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Mulai dari bawah */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Berhenti di posisi normal */
+    }
+}
+/* Media query untuk responsif */
+/* CSS untuk tampilan mobile */
+@media (max-width: 768px) {
+    .about {
+        grid-template-columns: 1fr; /* Mengubah layout menjadi satu kolom */
+        text-align: center;
+        padding: 15px; /* Mengurangi padding agar tidak terlalu lebar di mobile */
+    }
+
+    .about-img {
+        margin-top: 55px;
+        margin-bottom: 15px; /* Kurangi margin bawah *//* Pastikan z-index yang benar */
+        align-items: center;
+    }
+
+    .about-img img {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%; /* Menjaga gambar berbentuk lingkaran */
+        object-fit: cover; /* Agar gambar tetap proporsional */
+        margin: 0 auto; /* Mengatur gambar ke tengah */
+    }
+
+    .about-text {
+        padding: 15px; /* Memberi jarak di sekitar teks */
+    }
+
+    .home-image {
+        position: relative; /* Pastikan gambar tidak tertindih */
+        z-index: 0;
+    }
+
+    .home-image img {
+        display: none; /* Sembunyikan gambar di tampilan mobile */
+    }
+
+    /* Menyesuaikan elemen blur di background agar tidak menindih gambar */
+    .home-image::before {
+        height: 70%; /* Kurangi tinggi background blur */
+        margin-top: 40px;
+        border-radius: 40%;
+        filter: blur(25px); /* Kurangi blur */
+    }
+
+    .navbar {
+        display: none; /* Sembunyikan navbar di perangkat mobile */
+        text-align: center;
+    }
+
+    .navbar.active {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        top: 50px; /* Atur top agar lebih sesuai dengan layar kecil */
+        padding: 15px; /* Kurangi padding */
+    }
+    .navbar a {
+        margin-bottom: 8px;
+        padding: 8px;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: block; /* Tampilkan hamburger di perangkat mobile */
+    }
+
+    .home {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px; /* Tambahkan padding untuk memberikan ruang */
+    }
+
+    .home-content {
+        max-width: 100%;
+        margin-top: 100px; /* Menyesuaikan margin atas di tampilan mobile */
+    }
+
+    .home-content h3 {
+        font-size: 24px; /* Ukuran font lebih kecil */
+    }
+
+    .home-content h1 {
+        font-size: 32px; /* Ukuran font lebih kecil */
+    }
+
+    .home-image img {
+        margin-top: 50px;
+        margin-bottom: 30px;
+        width: 250px;
+        height: 250px;
+    }
+    .sub-title {
+        font-size: 24px; /* Ukuran font lebih kecil di mobile */
+    }
+    .services-list {
+        padding: 15px; /* Mengurangi padding untuk layar kecil */
+    }
+    .contact {
+        grid-template-columns: 1fr; /* Satu kolom untuk mobile */
+        padding-left: 10px; /* Padding lebih kecil */
+        padding-top: 40px; /* Padding lebih kecil */
+        margin-top: 40px; /* Margin lebih kecil */
+    }
+
+    .contact-text h2 {
+        font-size: 40px; /* Ukuran teks lebih kecil */
+    }
+
+    .contact-text h4,
+    .contact-text p {
+        font-size: 14px; /* Ukuran teks lebih kecil */
+    }
+
+    .contact-list li {
+        font-size: 14px; /* Ukuran font lebih kecil untuk daftar kontak */
+    }
+
+    .contact-form form .send {
+        padding: 8px 20px; /* Padding tombol lebih kecil */
+        font-size: 12px; /* Ukuran font lebih kecil untuk tombol */
+    }
+    
+}
+/* Animasi untuk h2 (fade-in dari kiri) */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px); /* Mulai dari kiri */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Animasi untuk h4 (fade-in dari kanan) */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px); /* Mulai dari kanan */
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Animasi untuk p (fade-in dari bawah) */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* Mulai dari bawah */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Berhenti di posisi normal */
+    }
+}
+
+/* Default state: elemen tidak terlihat */
+.about-text h2, .about-text h4, .about-text p {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+/* Animasi untuk masing-masing elemen */
+.about-text h2.active {
+    animation: fadeInLeft 0.6s ease forwards;
+}
+
+.about-text h4.active {
+    animation: fadeInRight 0.6s ease forwards;
+}
+
+.about-text p.active {
+    animation: fadeInUp 0.6s ease forwards;
+}
+/* Animasi untuk layanan */
+.services-list div {
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(20px); /* Mulai dari posisi sedikit di bawah */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transisi halus */
+}
+
+.services-list div.active {
+    opacity: 1; /* Menjadi terlihat */
+    transform: translateY(0); /* Kembali ke posisi semula */
+}
+/* Animasi untuk about */
+.about-text h2,
+.about-text h4,
+.about-text p,
+.services-list div{
+    opacity: 0; /* Awalnya tidak terlihat */
+    transform: translateY(20px); /* Mulai dari posisi sedikit di bawah */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transisi halus */
+}
+
+.about-text h2.active,
+.about-text h4.active,
+.about-text p.active,
+.services-list div.active {
+    opacity: 1; /* Menjadi terlihat */
+    transform: translateY(0); /* Kembali ke posisi semula */
+}
