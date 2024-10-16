@@ -56,6 +56,7 @@ body {
 
 .navbar.active {
     display: flex; /* Tampilkan navbar */
+    opacity: 1;
     flex-direction: column; /* Tumpuk item secara vertikal */
     position: absolute; /* Memastikan navbar dapat diposisikan */
     top: 60px; /* Sesuaikan dengan tinggi header */
@@ -363,25 +364,26 @@ body {
 }
 
 .skill-box {
-    background-color: transparent; /* Menghapus warna latar belakang */
+    background-color: transparent;
     padding: 20px;
     border-radius: 20px;
-    text-align: center; /* Mengatur teks ke tengah */
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5); /* Bayangan hitam */
-    transition: transform 0.3s, box-shadow 0.3s; /* Transisi untuk transformasi dan bayangan */
+    text-align: center;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 8px 40px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
 .skill-box:hover {
-    transform: translateY(-10px); /* Sedikit membesar saat hover */
+    transform: translateY(-10px);
 }
 
 .skill-box h2 {
-    margin-top: 10px; /* Jarak antara ikon dan teks */
-    font-size: 20px; /* Ukuran font untuk nama keterampilan */
+    margin-top: 10px;
+    font-size: 20px;
 }
-.skill-box i{
-    color: #FAEF5D;
+
+.skill-box i {
+    color: #FF004D;
     font-size: 50px;
 }
 
@@ -868,6 +870,25 @@ body {
     .contact-form form .send {
         padding: 8px 20px; /* Padding tombol lebih kecil */
         font-size: 12px; /* Ukuran font lebih kecil untuk tombol */
+    }
+ .skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 kolom */
+        gap: 20px; /* Jarak antar box */
+        justify-content: center;
+        padding: 20px; /* Mengurangi padding di mobile */
+    }
+
+    .skill-box {
+        padding: 15px;
+    }
+
+    .skill-box i {
+        font-size: 40px; /* Ukuran ikon sedikit lebih kecil di mobile */
+    }
+
+    .skill-box h2 {
+        font-size: 18px; /* Ukuran teks lebih kecil di mobile */
     }
     
 }
